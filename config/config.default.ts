@@ -24,18 +24,36 @@ export default (appInfo: EggAppConfig) => {
     serverUrl: 'https://hacker-news.firebaseio.com/v0',
   };
 
-  // override config from framework / plugin
-  config.keys = appInfo.name + '123456';
+  // TODO 切记要改这里
+  config.keys = appInfo.name + '123456789';
 
   config.view = {
-    defaultViewEngine: 'nunjucks',
+    defaultViewEngine: 'ejs',
     mapping: {
       '.tpl': 'nunjucks',
+      '.ejs': 'ejs',
     },
+    root: [path.join(appInfo.baseDir, 'app/view')].join(','),
   };
 
   config.siteFile = {
     '/favicon.ico': fs.readFileSync(path.join(appInfo.baseDir, 'app/public/favicon.png')),
+  };
+
+  config.sequelize = {
+    datasources: [
+      {
+        dialect: 'mysql',
+        // 挂载到 app 上的名字
+        delegate: 'model',
+        baseDir: 'model',
+        host: '127.0.0.1',
+        port: 3306,
+        database: 'test-egg',
+        username: 'root',
+        password: 'abc123',
+      },
+    ],
   };
 
   return config;

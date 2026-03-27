@@ -1,10 +1,24 @@
 {
   "extends": "@eggjs/tsconfig",
   "compilerOptions": {
-    "declaration": false
+    "strict": true,
+    "noImplicitAny": true,
+    "noImplicitThis": false,
+    "strictNullChecks": false,
+    "target": "es6",
+    "lib": ["ES2022", "DOM"],
+    "declaration": false,
+    "noUnusedLocals": false,
+    "experimentalDecorators": true,
+    // 启用元数据反射（必须开启，否则无法通过 reflect-metadata 获取元数据）
+    "emitDecoratorMetadata": true,
+    "noUnusedParameters": false,
+    "allowUnreachableCode": true,
+    "allowUnusedLabels": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["app/*"]
+    }
   },
-  "exclude": [
-    "app/public",
-    "app/views"
-  ]
+  "exclude": ["app/public", "app/view"]
 }

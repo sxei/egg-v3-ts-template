@@ -16,6 +16,9 @@ import 'egg-static';
 import 'egg-jsonp';
 import 'egg-view';
 import 'egg-view-nunjucks';
+import 'egg-view-ejs';
+import 'egg-sequelize';
+import 'egg-decorator-router';
 import { EggPluginItem } from 'egg';
 declare module 'egg' {
   interface EggPlugin {
@@ -32,5 +35,8 @@ declare module 'egg' {
     jsonp?: EggPluginItem;
     view?: EggPluginItem;
     nunjucks?: EggPluginItem;
+    ejs?: EggPluginItem;
+    sequelize?: EggPluginItem;
+    decoratorRouter?: EggPluginItem;
   }
 }
